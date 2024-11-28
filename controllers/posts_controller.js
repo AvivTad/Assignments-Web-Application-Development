@@ -36,8 +36,23 @@ const getPostById = async (req, res) => {
 };
 
 
+const getPostsBySender = async (req, res) => {
+  const senderId = req.query.sender;
+  try {
+    if (senderId) {
+      const posts = await PostModel.find({ owner: senderId });
+      res.send(posts);
+    } else {
+      res.status(400).send("Sender ID is required");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
     createPost,
     getAllPosts,
-    getPostById
+    getPostById,
+    getPostsBySender,
 };

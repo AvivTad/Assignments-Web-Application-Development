@@ -4,7 +4,16 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts/67471bdcbe4bac9a7fbe350c
+GET http://localhost:3000/posts?owner=Gil
+
+###
+
+GET http://localhost:3000/posts/by-sender?sender=<SENDER_ID>
+
+
+###
+
+GET http://localhost:3000/posts/6734b0c818a1cf8344804554
 
 ###
 
@@ -16,5 +25,3 @@ Content-Type: application/json
     "owner": "Gil",
     "content": "Hello World!"
 }
-
-###
