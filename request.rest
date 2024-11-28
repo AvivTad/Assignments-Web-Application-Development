@@ -1,6 +1,6 @@
 ###
 
-GET http://localhost:3000/posts
+GET http://localhost:<PORT>/posts
 
 ###
 
