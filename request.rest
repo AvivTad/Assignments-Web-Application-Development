@@ -1,14 +1,10 @@
 ###
 
-GET http://localhost:<PORT>/posts
+GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts?owner=Aviv
-
-###
-
-GET http://localhost:3000/posts/6734b0c818a1cf8344804554
+GET http://localhost:3000/posts/67471bdcbe4bac9a7fbe350c
 
 ###
 
@@ -22,5 +18,3 @@ Content-Type: application/json
 }
 
 ###
-
-DELETE http://localhost:3000/posts/6734b0c818a1cf8344804554
