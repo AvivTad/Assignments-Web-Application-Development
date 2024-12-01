@@ -61,9 +61,28 @@ const updateComment = async (req, res) => {
     return res.status(400).send("Invalid request");
 };
 
+const deleteComment = async (req, res) => {
+    const id = req.params.id;
+    const { content } = req.body;
+    if (id) {
+        try {
+            const comment = await commentModel.findByIdAndDelete(id,);
+            if (comment) {
+                return res.status(201).send(comment);
+            } else {
+                return res.status(404).send("Comment not found");
+            }
+        } catch (error) {
+            return res.status(400).send(error.message);
+        }
+    }
+
+    return res.status(400).send("Invalid request");
+};
 
 module.exports = {
     createComment,
     getComments,
     updateComment,
+    deleteComment,
 };
