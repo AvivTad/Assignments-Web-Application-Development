@@ -9,11 +9,18 @@ const createPost = async (req, res) => {
 }
 
 const getAllPosts = async (req, res) => {
+    const filter = req.query.sender;
     try {
-        const posts = await PostModel.find();
-        res.send(posts);
-    } catch (error) {
-        res.status(400).send(error.message);
+        if (filter) {
+            const posts = await PostModel.find({ sender: filter });
+            res.send(posts);
+        } else {
+            const posts = await PostModel.find();
+            res.send(posts);
+        }
+
+    } catch (err) {
+        res.status(400).send(err.message);
     }
 };
 
@@ -36,23 +43,10 @@ const getPostById = async (req, res) => {
 };
 
 
-const getPostsBySender = async (req, res) => {
-  const senderId = req.query.sender;
-  try {
-    if (senderId) {
-      const posts = await PostModel.find({ owner: senderId });
-      res.send(posts);
-    } else {
-      res.status(400).send("Sender ID is required");
-    }
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-};
+
 
 module.exports = {
     createPost,
     getAllPosts,
     getPostById,
-    getPostsBySender,
 };
