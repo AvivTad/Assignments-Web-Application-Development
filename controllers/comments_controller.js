@@ -38,8 +38,32 @@ const getComments = async (req, res) => {
     }
 };
 
+const updateComment = async (req, res) => {
+    const id = req.params.id;
+    const { content } = req.body;
+    if (id) {
+        try {
+            const comment = await commentModel.findByIdAndUpdate(
+                id,
+                { content: content },
+                { new: true }
+            );
+            if (comment) {
+                return res.status(201).send(comment);
+            } else {
+                return res.status(404).send("Comment not found");
+            }
+        } catch (error) {
+            return res.status(400).send(error.message);
+        }
+    }
+
+    return res.status(400).send("Invalid request");
+};
+
 
 module.exports = {
     createComment,
     getComments,
+    updateComment,
 };

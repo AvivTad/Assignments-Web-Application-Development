@@ -47,6 +47,13 @@ Get http://localhost:3000/comments
 
 ###
 
-Get http://localhost:3000/comments?post_id=674c61d430bafa729b47de63
+Get http://localhost:3000/comments?post_id=674c6daadda5e06274a40165
 
 ###
+
+PUT  http://localhost:3000/comments/674c6daadda5e06274a40165
+Content-Type: application/json
+
+{
+    "content": "new comment"
+}
