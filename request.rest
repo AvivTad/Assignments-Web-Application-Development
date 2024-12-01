@@ -4,7 +4,11 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts/67471bdcbe4bac9a7fbe350c
+GET http://localhost:3000/posts?sender=Ron
+
+###
+
+GET http://localhost:3000/posts/674c5b42003fe3d656132b6e
 
 ###
 
@@ -12,9 +16,7 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "title": "First post",
-    "owner": "Gil",
-    "content": "Hello World!"
+    "title": "1 post",
+    "sender": "Ron",
+    "content": "apple !"
 }
-
-###
