@@ -1,4 +1,5 @@
 const commentModel = require("../models/comments_model");
+const PostModel = require("../models/posts_model");
 
 
 const createComment = async (req, res) => {
@@ -21,8 +22,24 @@ const createComment = async (req, res) => {
     }
 };
 
+const getComments = async (req, res) => {
+    const filter = req.query.post_id;
+    try {
+        if (filter) {
+            const comments = await commentModel.find({ postId: filter });
+            res.send(comments);
+        } else {
+            const comments = await commentModel.find();
+            res.send(comments);
+        }
+
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
 
 
 module.exports = {
     createComment,
+    getComments,
 };

@@ -1,5 +1,6 @@
 const PostModel = require("../models/posts_model");
 
+
 const createPost = async (req, res) => {
     console.log("Post create");
     try {
@@ -64,8 +65,6 @@ const updatePost = async (req, res) => {
 
     return res.status(400).send(err.message);
 };
-
-
 
 
 module.exports = {

@@ -8,7 +8,7 @@ GET http://localhost:3000/posts?sender=Ron
 
 ###
 
-GET http://localhost:3000/posts/674c5b33003fe3d656132b6a
+GET http://localhost:3000/posts/674c61d430bafa729b47de63
 
 ###
 
@@ -36,7 +36,17 @@ POST http://localhost:3000/comments
 Content-Type: application/json
 
 {
-    "postId": "674c5b51003fe3d656132b70",
+    "postId": "674c61d430bafa729b47de63",
     "sender": "ee",
     "content": "ba!!"
 }
+
+###
+
+Get http://localhost:3000/comments
+
+###
+
+Get http://localhost:3000/comments?post_id=674c61d430bafa729b47de63
+
+###
