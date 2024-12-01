@@ -20,3 +20,14 @@ Content-Type: application/json
     "sender": "Ron",
     "content": "apple !"
 }
+
+###
+
+PUT  http://localhost:3000/posts/67471be1be4bac9a7fbe350e
+Content-Type: application/json
+
+{
+    "content": "new content"
+}
+
+###
