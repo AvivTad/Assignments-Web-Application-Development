@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon ./srcapp.ts",
+    "dev": "nodemon ./src/app.ts",
     "start": "tsc && node dist/app.js",
     "test": "jest --detectOpenHandles --forceExit --coverage",
     "lint": "eslint . --ext .ts"
