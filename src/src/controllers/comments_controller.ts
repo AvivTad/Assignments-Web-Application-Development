@@ -1,8 +1,8 @@
-const commentModel = require("../models/comments_model");
-const PostModel = require("../models/posts_model");
+import commentModel from "../models/comments_model";
+import PostModel from "../models/posts_model";
+import {Request, Response} from "express";
 
-
-const createComment = async (req, res) => {
+const createComment = async (req: Request, res: Response) => {
     try {
         const postId = req.body.postId;
         if (!postId) {
@@ -17,12 +17,12 @@ const createComment = async (req, res) => {
         const comment = await commentModel.create(req.body);
         res.status(201).send(comment);
     } catch (error) {
-        console.error("Error creating comment:", error.message);
-        res.status(400).send(error.message);
+        console.error("Error creating comment:", error);
+        res.status(400).send(error);
     }
 };
 
-const getComments = async (req, res) => {
+const getComments = async (req: Request, res: Response) => {
     const filter = req.query.post_id;
     try {
         if (filter) {
@@ -33,12 +33,12 @@ const getComments = async (req, res) => {
             res.send(comments);
         }
 
-    } catch (err) {
-        res.status(400).send(err.message);
+    } catch (error) {
+        res.status(400).send(error);
     }
 };
 
-const updateComment = async (req, res) => {
+const updateComment = async (req: Request, res: Response) => {
     const id = req.params.id;
     const { content } = req.body;
     if (id) {
@@ -54,14 +54,14 @@ const updateComment = async (req, res) => {
                 return res.status(404).send("Comment not found");
             }
         } catch (error) {
-            return res.status(400).send(error.message);
+            return res.status(400).send(error);
         }
     }
 
     return res.status(400).send("Invalid request");
 };
 
-const deleteComment = async (req, res) => {
+const deleteComment = async (req: Request, res: Response) => {
     const id = req.params.id;
     const { content } = req.body;
     if (id) {
@@ -73,14 +73,14 @@ const deleteComment = async (req, res) => {
                 return res.status(404).send("Comment not found");
             }
         } catch (error) {
-            return res.status(400).send(error.message);
+            return res.status(400).send(error);
         }
     }
 
     return res.status(400).send("Invalid request");
 };
 
-module.exports = {
+export default {
     createComment,
     getComments,
     updateComment,
