@@ -1,15 +1,15 @@
-const PostModel = require("../models/posts_model");
+import PostModel from "../models/posts_model";
+import {Request, Response} from "express";
 
-
-const createPost = async (req, res) => {
+const createPost = async (req: Request, res: Response) => {
     console.log("Post create");
     try {
         const post = await PostModel.create(req.body);
         res.status(201).send(post);
-    } catch (error) { res.status(400).send(error.message); }
+    } catch (error) { res.status(400).send(error); }
 }
 
-const getAllPosts = async (req, res) => {
+const getAllPosts = async (req: Request, res: Response) => {
     const filter = req.query.sender;
     try {
         if (filter) {
@@ -20,12 +20,12 @@ const getAllPosts = async (req, res) => {
             res.send(posts);
         }
 
-    } catch (err) {
-        res.status(400).send(err.message);
+    } catch (error) {
+        res.status(400).send(error);
     }
 };
 
-const getPostById = async (req, res) => {
+const getPostById = async (req: Request, res: Response) => {
     const id = req.params.id;
     if (id) {
         try {
@@ -36,14 +36,13 @@ const getPostById = async (req, res) => {
                 return res.status(404).send("Post not found");
             }
         } catch (error) {
-            return res.status(400).send(error.message);
+            return res.status(400).send(error);
         }
     }
-
-    return res.status(400).send(err.message);
+    return res.status(404).send("Post not found");
 };
 
-const updatePost = async (req, res) => {
+const updatePost = async (req: Request, res: Response) => {
     const id = req.params.id;
     const { content } = req.body;
     if (id) {
@@ -59,15 +58,13 @@ const updatePost = async (req, res) => {
                 return res.status(404).send("Post not found");
             }
         } catch (error) {
-            return res.status(400).send(error.message);
+            return res.status(400).send(error);
         }
     }
-
-    return res.status(400).send(err.message);
 };
 
 
-module.exports = {
+export default  {
     createPost,
     getAllPosts,
     getPostById,
