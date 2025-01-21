@@ -63,10 +63,24 @@ const updatePost = async (req: Request, res: Response) => {
     }
 };
 
+const deletePost = async (req: Request, res: Response) => {
+    const id = req.params.id;
+    try {
+        const post = await PostModel.findByIdAndDelete(id);
+        if (post) {
+            return res.status(200).send(post);
+        } else {
+            return res.status(404).send("Post not found");
+        }
+    } catch (error) {
+        return res.status(400).send(error);
+    }
+};
 
 export default  {
     createPost,
     getAllPosts,
     getPostById,
     updatePost,
+    deletePost
 };

@@ -11,4 +11,8 @@ router.put("/:id", (req, res)=>{
     postsController.updatePost(req,res);
 });
 
+router.delete("/:id", (req, res) => {
+    postsController.deletePost(req, res);
+});
+
 export default router;
