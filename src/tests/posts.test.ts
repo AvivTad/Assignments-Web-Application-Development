@@ -70,7 +70,7 @@ describe("Posts test suite", () => {
     const fakePostId = new mongoose.Types.ObjectId().toString();
     const response = await request(app).get("/posts/"+fakePostId);
     expect(response.statusCode).toBe(404);
-    expect(response.text).toBe("Post not found");
+    expect(response.text).toBe("Value not found");
   });
 
   test("Update post content", async () => {
@@ -83,7 +83,7 @@ describe("Posts test suite", () => {
     const fakePostId = new mongoose.Types.ObjectId().toString();
     const response = await request(app).put("/posts/"+fakePostId).send(updatedPost);
     expect(response.statusCode).toBe(404);
-    expect(response.text).toBe("Post not found");
+    expect(response.text).toBe("Value not found");
   });
 
   test("Delete a post by ID", async () => {
@@ -96,6 +96,6 @@ describe("Posts test suite", () => {
     const fakePostId = new mongoose.Types.ObjectId().toString();
     const response = await request(app).delete("/posts/"+fakePostId);
     expect(response.statusCode).toBe(404);
-    expect(response.text).toBe("Post not found");
+    expect(response.text).toBe("Value not found");
   });
 });
