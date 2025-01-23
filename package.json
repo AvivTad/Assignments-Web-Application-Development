@@ -5,22 +5,31 @@
   "scripts": {
     "dev": "nodemon ./src/app.ts",
     "start": "tsc && node dist/app.js",
-    "test": "tsc && jest --detectOpenHandles --forceExit --coverage",
+    "test": "tsc && jest --detectOpenHandles --forceExit --coverage --runInBand",
+    "authTest": "tsc && jest --detectOpenHandles --forceExit auth.test.ts",
+    "postTest": "tsc && jest --detectOpenHandles --forceExit posts.test.ts",
+    "commentTest": "tsc && jest --detectOpenHandles --forceExit comments.test.ts",
+
+
     "lint": "eslint . --ext .ts"
   },
   "author": "Aviv Tadmor",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/supertest": "^6.0.2",
     "eslint": "^9.18.0",
     "globals": "^15.14.0",
