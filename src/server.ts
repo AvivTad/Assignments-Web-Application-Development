@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import postsRoute from './routes/posts_route';
 import commentsRoute from './routes/comments_route';
+import authRoute from './routes/auth_route';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const initApp = async (): Promise<Express> => {
   // Routes
   app.use('/posts', postsRoute);
   app.use('/comments', commentsRoute);
+  app.use('/auth', authRoute);
 
   // MongoDB connection
   const mongoUri = process.env.DB_CONNECT;
